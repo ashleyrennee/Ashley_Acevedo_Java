@@ -8,6 +8,13 @@ public class Customer {
     private String name;
     private List<AccountRecord> charges = new ArrayList<>();
 
+    public Customer(int id, String name, List<AccountRecord> charges) {
+        this.id = id;
+        this.name = name;
+        this.charges = charges;
+    }
+
+
     public int getId() {
         return id;
     }
@@ -25,17 +32,20 @@ public class Customer {
     }
 
     public int getBalance() {
-        //update this
-        return 0;
+        //update
+        int sum = 0;
+        for(AccountRecord c: charges){
+            sum = sum + c.getCharge();
+        }
+        return sum;
     }
-
     public List<AccountRecord> getCharges() {
         return charges;
     }
 
     @Override
     public String toString() {
-        //update this
-        return "Update me";
+        //update
+        return "ID: " + id + " Name: " + name + " Balance " + getBalance();
     }
 }

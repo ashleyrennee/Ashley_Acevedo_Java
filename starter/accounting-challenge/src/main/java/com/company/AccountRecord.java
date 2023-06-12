@@ -7,6 +7,10 @@ public class AccountRecord {
     public int getCharge() {
         return charge;
     }
+    public AccountRecord(int charge, String chargeDate){
+        this.charge = charge;
+        this.chargeDate = chargeDate;
+    }
 
     public void setCharge(int charge) {
         this.charge = charge;
