@@ -13,8 +13,6 @@ public class Customer {
         this.name = name;
         this.charges = charges;
     }*/
-
-
     public int getId() {
         return id;
     }

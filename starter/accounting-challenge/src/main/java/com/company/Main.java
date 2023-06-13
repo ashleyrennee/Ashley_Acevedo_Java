@@ -31,36 +31,49 @@ public class Main {
         String companyName;
         String charge;
         String chargeDate;
-
-        for(String[] c : customerData){
-            data = c;
+        List<String> idExists = new ArrayList<>();
+        //for(String[] c : customerData){
+        for(int i = 0; i < customerData.size();i++){
+            data = customerData.get(i);
             id = data[0];
             companyName = data[1];
             charge = data[2];
             chargeDate = data[3];
 
-            //List<AccountRecord> records = new ArrayList<>();
-            List<String> idExists = new ArrayList<>();
             AccountRecord record = new AccountRecord();
             Customer customer = new Customer();
 
+            if (idExists.contains(id)){
+                customer = customerData2.get(customer.getId());
+                charge = data[2];
+                chargeDate = data[3];
+                record.setCharge(Integer.parseInt(charge));
+                record.setChargeDate(chargeDate);
+                customer.getCharges().add(record);
+                continue;
+            }
             //initialize the record object and add it to records array
             record.setCharge(Integer.parseInt(charge));
             record.setChargeDate(chargeDate);
-            //records.add(record);
 
             //initialize the customer object and add charges to the customer object
             customer.setId(Integer.parseInt(id));
             customer.setName(companyName);
-            customer.getCharges();
+            customer.getCharges().add(record);
 
             //append the customer object to customerData2 array
+            idExists.add(id);
             customerData2.add(customer);
 
+            /*System.out.println("---------------------------");
+            System.out.println("record:");
             System.out.println(record.getCharge() + ","+ record.getChargeDate());
-            System.out.println(customer.getCharges());
+            System.out.println("records:");
+            System.out.println(records);
+            System.out.println("charges from customer object:");
+            System.out.println(customer.getCharges());*/
 
-            idExists.add(id);
+
             //records.add(new AccountRecord(Integer.parseInt(charge), chargeDate));
            // customerData2.add(new Customer(Integer.parseInt(id), companyName, records));
         }
@@ -84,7 +97,7 @@ public class Main {
     public static List<Customer> negativeBalances(List<Customer> customers){
         List<Customer> negAccounts = new ArrayList<>();
         for(Customer c : customers){
-            if(c.getBalance() > 0 ){
+            if(c.getBalance() < 0 ){
                 negAccounts.add(c);
             }
         }
