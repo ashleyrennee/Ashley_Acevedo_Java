@@ -8,11 +8,11 @@ public class Customer {
     private String name;
     private List<AccountRecord> charges = new ArrayList<>();
 
-    public Customer(int id, String name, List<AccountRecord> charges) {
+    /*public Customer(int id, String name, List<AccountRecord> charges) {
         this.id = id;
         this.name = name;
         this.charges = charges;
-    }
+    }*/
 
 
     public int getId() {
@@ -46,6 +46,6 @@ public class Customer {
     @Override
     public String toString() {
         //update
-        return "Customer{" + "ID: " + id + "," + " Name: " + name + "," + " Balance: " + getBalance() + "}";
+        return "Customer{" + "ID: " + getId() + "," + " Name: " + getName() + "," + " Balance: " + getBalance() + "}\n";
     }
 }

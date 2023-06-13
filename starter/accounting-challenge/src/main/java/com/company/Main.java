@@ -26,29 +26,85 @@ public class Main {
             new String[]{"1", "Wayne Enterprises", "10000", "12-01-2021"}
     );
     public static List<Customer> createCustomers(List<String[]> customerData){
+        String[] data;
+        String id;
+        String companyName;
+        String charge;
+        String chargeDate;
+
         for(String[] c : customerData){
-            String[] data = c;
-            List<AccountRecord> records = new ArrayList<>();
-            records.add(new AccountRecord(Integer.parseInt(data[2]), data[3]));
-            customerData2.add(new Customer(Integer.parseInt(data[0]), data[1], records));
+            data = c;
+            id = data[0];
+            companyName = data[1];
+            charge = data[2];
+            chargeDate = data[3];
+
+            //List<AccountRecord> records = new ArrayList<>();
+            List<String> idExists = new ArrayList<>();
+            AccountRecord record = new AccountRecord();
+            Customer customer = new Customer();
+
+            //initialize the record object and add it to records array
+            record.setCharge(Integer.parseInt(charge));
+            record.setChargeDate(chargeDate);
+            //records.add(record);
+
+            //initialize the customer object and add charges to the customer object
+            customer.setId(Integer.parseInt(id));
+            customer.setName(companyName);
+            customer.getCharges();
+
+            //append the customer object to customerData2 array
+            customerData2.add(customer);
+
+            System.out.println(record.getCharge() + ","+ record.getChargeDate());
+            System.out.println(customer.getCharges());
+
+            idExists.add(id);
+            //records.add(new AccountRecord(Integer.parseInt(charge), chargeDate));
+           // customerData2.add(new Customer(Integer.parseInt(id), companyName, records));
         }
         return customerData2;
-
     }
-
-
     /*
     iterate through this stream ^, then take this array and set the values in the array to equal the elements
     in the Customer Class with the last two indexes representing the AccountRecord object within the customer object
     */
 
+    public static List<Customer> positiveBalances(List<Customer> customers){
+        List<Customer> posAccounts = new ArrayList<>();
+        for(Customer c : customers){
+            if(c.getBalance() >= 0 ){
+                posAccounts.add(c);
+            }
+        }
+        return posAccounts;
+    }
+
+    public static List<Customer> negativeBalances(List<Customer> customers){
+        List<Customer> negAccounts = new ArrayList<>();
+        for(Customer c : customers){
+            if(c.getBalance() > 0 ){
+                negAccounts.add(c);
+            }
+        }
+        return negAccounts;
+    }
+
     public static void main(String[] args) {
         /*Update this by iterating through the Customer data array and printing out positive balances
         under first print statement and negative under the second*/
         List<Customer> customers = createCustomers(customerData);
+        List<Customer> posAccounts = positiveBalances(customers);
+        List<Customer> negAccounts = negativeBalances(customers);
+
         System.out.println(customers);
+        System.out.println("------------------");
         System.out.println("Positive accounts:");
+        System.out.println(posAccounts);
+        System.out.println("------------------");
         System.out.println("Negative accounts:");
+        System.out.println(negAccounts);
     }
 }
 
