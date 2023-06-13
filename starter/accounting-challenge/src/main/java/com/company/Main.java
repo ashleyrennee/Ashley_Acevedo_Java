@@ -25,13 +25,14 @@ public class Main {
             new String[]{"3", "Ace Chemical", "-82000", "01-03-2022"},
             new String[]{"1", "Wayne Enterprises", "10000", "12-01-2021"}
     );
-    public static void createCustomers(List<String[]> customerData){
+    public static List<Customer> createCustomers(List<String[]> customerData){
         for(String[] c : customerData){
             String[] data = c;
             List<AccountRecord> records = new ArrayList<>();
-            customerData2.add(new Customer(Integer.parseInt(data[0]), data[1], records
-                    .add(new AccountRecord(Integer.parseInt(data[2]), data[3]))));
+            records.add(new AccountRecord(Integer.parseInt(data[2]), data[3]));
+            customerData2.add(new Customer(Integer.parseInt(data[0]), data[1], records));
         }
+        return customerData2;
 
     }
 
@@ -44,7 +45,8 @@ public class Main {
     public static void main(String[] args) {
         /*Update this by iterating through the Customer data array and printing out positive balances
         under first print statement and negative under the second*/
-        createCustomers(customerData);
+        List<Customer> customers = createCustomers(customerData);
+        System.out.println(customers);
         System.out.println("Positive accounts:");
         System.out.println("Negative accounts:");
     }
