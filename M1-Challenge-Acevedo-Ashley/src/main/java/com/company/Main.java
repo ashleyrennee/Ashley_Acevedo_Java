@@ -60,8 +60,6 @@ public class Main {
                 idExists.add(id);
                 customerData2.add(customer);
 
-                System.out.println("new cust");
-                System.out.println(customer);
 
             } else{
                 for (Customer p : customerData2){
@@ -74,8 +72,6 @@ public class Main {
                 record.setCharge(Integer.parseInt(charge));
                 record.setChargeDate(chargeDate);
                 customer.getCharges().add(record);
-                System.out.println("old cust");
-                System.out.println(customer);
 
             }
         }

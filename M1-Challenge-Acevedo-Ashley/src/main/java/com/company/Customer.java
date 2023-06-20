@@ -44,6 +44,6 @@ public class Customer {
     @Override
     public String toString() {
         //update
-        return "Customer{" + "ID: " + getId() + "," + " Name: " + getName() + "," + " Balance: " + getBalance() + "}\n";
+        return "Customer{" + "ID: " + id + "," + " Name: " + name + "," + " Balance: " + getBalance() + "}\n";
     }
 }
