@@ -1,7 +1,8 @@
-package com.company.chatterbook;
+package com.company.chatterbook.model;
 
 public class ChatterPost {
     public String text;
+
     public ChatterPost(String text){
         this.text = text;
     }
@@ -9,10 +10,7 @@ public class ChatterPost {
     public String getText() {
         return text;
     }
-
     public void setText(String text) {
         this.text = text;
     }
-
-
 }

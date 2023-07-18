@@ -1,13 +1,13 @@
-package com.company.chatterbook;
+package com.company.chatterbook.controller;
+import com.company.chatterbook.model.ChatterPost;
+import com.company.chatterbook.model.User;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 
 @RestController
 public class ChatterbookController {
@@ -42,14 +42,12 @@ public class ChatterbookController {
     }
     //get all users
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public List <User> getUsers(){
-        return userList;
-    }
+    public List <User> getUsers(){return userList;}
+
     //get users by name
     @RequestMapping(value = "/user/{name}", method = RequestMethod.GET)
     public User getUserByName(@PathVariable String name) {
         User user = null;
-
         for (User n : userList) {
             if (n.getName().equals(name)) {
                 user = n;
@@ -69,6 +67,4 @@ public class ChatterbookController {
         }
         return userPosts;
     }
-
-
 }
