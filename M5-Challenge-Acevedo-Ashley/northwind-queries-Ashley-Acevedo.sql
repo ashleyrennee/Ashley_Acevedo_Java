@@ -10,10 +10,16 @@ FROM products
 WHERE product_name 
 LIKE "Dell%";
 
+-- All info on said product
+SELECT *
+FROM products 
+WHERE product_name 
+LIKE "Dell%";
+
 -- List all the orders shipped to Pennsylvania.
 SELECT * 
 FROM orders 
-WHERE ship_city = 'Pennsylvania';
+WHERE ship_state = 'Pennsylvania';  
 
 -- List the first name and last name of all employees with last names that start with the letter W.
 SELECT first_name,last_name
