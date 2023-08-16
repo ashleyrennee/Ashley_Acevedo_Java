@@ -15,8 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import org.springframework.http.MediaType;
 
-
-
 @WebMvcTest(CustomerController.class)
 class CustomerControllerTest {
     @MockBean
